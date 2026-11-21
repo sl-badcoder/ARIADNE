@@ -1,0 +1,14 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local environments and secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
