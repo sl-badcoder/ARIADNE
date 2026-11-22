@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-22",
+  "nvidia_driver": "615.71.09",
+  "upstream_commit": "61dcc93722ecb418bb5f2e00923f05b4b8051dd1",
+  "target": "x86_64-linux-gnu",
+  "kernel_headers": "Ubuntu 6.8.0-31.31",
+  "compiler": "Clang 21.1.6",
+  "configuration": "DEBUG",
+  "additional_release_translation_units_compiled": 9,
+  "uvm_translation_units_compiled": 118,
+  "aggregate_elf_linker": "LLD 21.1.8",
+  "aggregate_elf_link_passed": true,
+  "unresolved_internal_uvm_or_ariadne_symbols": [],
+  "policy_tests": "PASS with address and undefined-behavior sanitizers",
+  "uvm_source_fingerprint_sha256": "d6a1bfe46b46fa6c325f1eb6b26213405fa26e2e4d3a4b27d26f33d0dc7038ce",
+  "fingerprint_method": "Sorted kernel-open/nvidia-uvm .c/.h/.Kbuild files; concatenate relative-to-kernel-open path, NUL, file bytes, NUL; SHA256",
+  "native_linux_kbuild_modpost_completed": false,
+  "cuda_smoke_test_compiled": false,
+  "driver_loaded_on_gpu": false,
+  "runtime_or_performance_validated": false
+}

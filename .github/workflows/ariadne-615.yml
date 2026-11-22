@@ -1,0 +1,33 @@
+name: ARIADNE 615 build
+
+on:
+  push:
+    paths: ['ARIADNE-615.71.09/**', 'tests/ariadne_615/**', 'build_ARIADNE_615.sh', '.github/workflows/ariadne-615.yml']
+  pull_request:
+    paths: ['ARIADNE-615.71.09/**', 'tests/ariadne_615/**', 'build_ARIADNE_615.sh', '.github/workflows/ariadne-615.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test Sharing Degree and placement policy
+        run: |
+          cc -std=c11 -Wall -Wextra -Werror -pedantic -fsanitize=address,undefined \
+            -I ARIADNE-615.71.09/kernel-open/common/inc \
+            -I ARIADNE-615.71.09/kernel-open/nvidia-uvm \
+            tests/ariadne_615/policy_test.c -o /tmp/ariadne-policy-test
+          /tmp/ariadne-policy-test
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y build-essential linux-headers-generic
+      - name: Build release modules
+        shell: bash
+        run: |
+          headers=$(find /usr/src -maxdepth 1 -type d -name 'linux-headers-*-generic' | sort -V | tail -n 1)
+          test -n "$headers"
+          KERNEL_HEADERS="$headers" bash build_ARIADNE_615.sh
